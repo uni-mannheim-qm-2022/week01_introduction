@@ -1,0 +1,251 @@
+/***** Some places to start updating your custom css *****/
+
+/* Import google fonts here */
+
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700';
+@import 'https://fonts.googleapis.com/css?family=Source+Code+Pro';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* Body */
+
+body {
+  background-color: white;
+  color: #333;
+  font-family: 'Roboto', sans-serif !important;
+	word-wrap: break-word;
+	line-height: 1.7;
+}
+
+/*-------- Main Panel ---------*/
+.topics {
+    width: 75%;
+    overflow-x: auto;
+    padding-bottom: 600px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    border-left: 0;
+}
+
+.band {
+    padding-left: 3%;
+    padding-right: 3%;
+    position: relative;
+}
+
+/* Links */
+
+a:link{
+  color: rgba(0, 43, 86) !important;
+}
+
+a:hover {
+  color: rgb(223, 126, 80) !important;
+}
+
+a:visited {
+  color: rgba(0, 43, 86) !important;
+}
+code {
+  background-color: rgba(179, 182, 185, 0.25);
+}
+
+
+/* Headers */
+
+h1 {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 700 !important;
+  color: rgba(0, 43, 86) !important;
+}
+
+
+h2 {
+  font-family: 'Montserrat', sans-serif !important;
+  color: rgba(0, 43, 86, 0.9) !important;
+  font-size: 2em !important;
+  font-weight: 700 !important;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif !important;
+  color: rgba(0, 43, 86, 0.9) !important;
+  font-size: 2em !important;
+  font-weight: 400 !important;
+}
+
+h4 {
+  font-family: 'Montserrat', sans-serif !important;
+  color: rgba(0, 43, 86, 0.85) !important;
+  font-size: 1.2em !important;
+  font-weight: 400 !important;
+}
+
+
+
+
+/* Left menu topics list */
+
+.topicsList .topic {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(179, 182, 185, 0.25);
+  color: rgba(0, 43, 86);
+  padding-left: 10px;
+  padding-right: 10px;
+  background-size: 10px 100px;
+  background-image: none;
+  border-bottom: 0;
+  border-top: 0;
+}
+
+
+.topicsList .topic .current {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(223, 126, 80);
+  color: white;
+  border: 0;
+}
+
+.topicsList .topic:hover {
+  color: rgb(223, 126, 80) !important;
+}
+
+/* Tutorial Title (top left) */
+
+.tutorialTitle {
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(0, 43, 86);
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* Date */
+
+.author {
+  color: rgba(0, 43, 86) !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500 !important;
+}
+
+.date {
+  color: rgba(0, 43, 86) !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300 !important;
+}
+
+/* next button */
+
+.btn-primary {
+  background-color: rgba(0, 43, 86) !important;
+  color: white !important;
+  font-family: 'Montserrat', sans-serif;
+}
+.btn-primary:hover {
+  background-color: rgba(0, 43, 86, 0.85) !important;
+  color: white !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primary:disabled {
+  background-color: rgba(0, 43, 86, 0.85) !important;
+  color: white !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* previous button */
+
+.btn-default{
+  background-color: rgba(0, 43, 86, 0.5) !important;
+  color: white !important;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.btn-default:hover{
+  background-color: rgba(0, 43, 86, 0.35) !important;
+  color: white !important;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Run Code button */
+
+.pull-right {
+  background-color: rgba(0, 43, 86) !important;
+}
+
+.pull-right:active{
+  color: rgba(223, 126, 80, 0.85) !important;
+}
+
+.pull-right:hover{
+  color: rgba(223, 126, 80, 0.35) !important;
+}
+
+.btn-success {
+    color: #ffffff !important;
+    background-color: rgba(0, 43, 86) !important;
+    border-color: rgba(0, 43, 86) !important;
+}
+
+.btn-success:hover {
+    color: #ffffff !important;
+    background-color: rgba(223, 126, 80) !important;
+    border-color: rgba(223, 126, 80) !important;
+}
+
+/* Reset button */
+
+.resetButton {
+  color: rgba(223, 126, 80) !important;
+}
+
+
+/* blockquotes */
+
+blockquote {
+  font-size: 1em !important;
+  border-left: 0px solid #ccc;
+  width: auto !important;
+  display: block !important;
+  background:rgba(223, 126, 80, 1) !important;
+  color:white !important;
+  text-align:center !important;
+  padding:0.7em !important;
+  border-radius:4px !important;
+}
+
+/* lists */
+
+li {
+  margin-left: 0px;
+}
+
+ul {
+  margin-left: 0px;
+}
+
+ol {
+  margin-left: 0px;
+}
+
+code {
+	font-family: 'Source Code Pro', Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	line-height: 1.6;
+}
+
+.tocify-item {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.list-group-item.active {
+  background-color: rgba(0, 43, 86) !important;
+  border-color: rgba(0, 43, 86) !important;
+}
+
+.list-group-item.active:hover {
+    color: #ffffff !important;
+    background-color: rgba(223, 126, 80) !important;
+    border-color: rgba(223, 126, 80) !important;
+}

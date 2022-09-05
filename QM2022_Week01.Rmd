@@ -1,0 +1,1373 @@
+---
+title: "QM 2022 Week 1:<br>Getting Started with R"
+author: "Oliver Rittmann<br>Domantas Undzėnas<br>Lion Behrens<br>"
+date: "September 7 | 8 | 9, 2022"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    css: css/lab.css
+  pdf_document:
+    toc: yes
+  html_notebook:
+    toc: true
+    toc_float: true
+    css: css/lab.css
+---
+
+## Learning goals of the first week
+
+  1. What are R, RStudio, and Git?
+  2. How to use **R as a basic calculator**?
+  3. What are **Objects in R**?
+  4. Something about **R Data structures**
+      - Vectors
+      - Matrices
+      - Data frames
+      - Arrays
+      - Lists
+  5. **Selecting Elements** in a vector, matrix or data frame
+  6. Working with **data frames**
+      - Loading data 
+      - Manipulating data
+  7. Calculating **Measures of Central Tendency and Variability**
+  8. **Plotting data** and saving plots
+ 
+
+
+## What are R, RStudio, and Git?
+
+### What is **R**?
+
+`R` is a programming language designed to help you perform statistical analysis, create graphics, and later on write your own statistical software. `R` is becoming increasingly popular and knowledge of R will help you on the job market. `R` is probably the most versatile statistical tool out there (and it's free and open-source so you can literally use it anywhere). It is for example used in all fields of academia, from biology to economics, and outside academia including
+
+ - Wallstreet
+ - The Economist
+ - [BBC](https://blog.revolutionanalytics.com/2018/06/ft-bbc-uses-r.html)
+ - Google Analytics
+ - NY Times graphics department
+ 
+ 
+### What is **RStudio**?
+
+RStudio is a great graphical user interface for `R`. In recent years, a growing number of features have been added to this graphical user interface, which makes it the preferred choice for learning `R`, especially among beginners. You can think about it as `R` being the engine of the car and RStudio being the dashboard. 
+
+### What are **RStudio Projects**?
+
+RStudio projects make it straightforward to divide your work into multiple contexts, each with its own working directory, workspace, history, and source documents. A project is basically a folder on your computer that holds all the files relevant to a particular piece of work. Working in RStudio Projects has multiple advantages:
+
+  - Once an RStudio Project is set up, you do not have to worry about your working directory anymore.
+  - When opening an RStudio Project, a new `R` session (process) is started. This makes sure that things you do in different projects do not mess up.
+  - You can open and work with multiple RStudio projects at the same time.
+  - RStudio projects can easily be exported to and imported from GitHub.
+
+
+### What are **Git** and **GitHub**?
+
+Git is a version control system that makes it easy to track changes and work on code collaboratively. GitHub is a hosting service for `git`. You can think of it as a public Dropbox for code but on steroids. With version control, you will build your projects step-by-step, be able to come back to any version of the project, and accompany everything with human-readable messages. 
+
+As a student, you even get unlimited private repositories which you can use if you don't feel like sharing your code with the rest of the world (yet). We will use private repositories to distribute code and assignments to you. And you will use it to keep track of your code and collaborate in teams. 
+
+With git, writing code for a project will look somewhat like this:
+
+![](images/lego-steps-commit-messages.png)
+
+
+### What is a **Git Repository**? 
+
+A Git repository is a space where you store and manage a project. It contains all of your project's files and stores each file's revision history. It's common to refer to a repository as a repo. 
+
+We will you one repository for each lab and one repository for each homework assignment. You can directly import ("pull") repositories via RStudio and save them on your computer. If you changed something in your project, you can easily upload ("push") the new version to GitHub. GitHub will keep track of all changes you made over time within your project.
+
+
+## Workflow overview
+
+Our workflow will appear a bit tricky at the beginning but we are sure that you will handle it with ease very soon. We assume that by now you downloaded and installed R and Rstudio and have your personal GitHub account.
+
+The course has its own page on GitHub, you can find it here: [https://github.com/uni-mannheim-qm-2022](https://github.com/uni-mannheim-qm-2022). This is the place where you can find all relevant material for the lab sessions. It is also the place where you download and hand in your homework assignments. 
+
+So how does this work?
+
+#### Get the URL of the repo for the current week
+
+Go to [https://github.com/uni-mannheim-qm-2022](https://github.com/uni-mannheim-qm-2022) and click on the repository for the current week (this week, this is called `week01_introduction`). Now, click on the green **Clone or download** button and select **Use HTTPS** (this might already be selected by default, and if it is, you'll see the text Clone with HTTPS as in the image below). Click on the clipboard icon to copy the repo URL.
+
+```{r echo=FALSE, out.width="40%", fig.align = 'center'}
+knitr::include_graphics("images/github_clone.png")
+```
+
+#### Import the repository in RStudio
+
+  1. Open RStudio.
+  2. Click on `File` on the top bar and select `New Project...`.
+
+```{r echo=FALSE, out.width="100%", fig.align = 'center'}
+knitr::include_graphics("images/new_project.png")
+```
+
+  3. Select `Version Control`. 
+  4. In the next window, select `Git`.
+  5. In the final window, paste the repo URL you grabbed from GitHub in the `Repository URL` window. Click on `Browse` to select the folder on your computer where you want to store the project.
+  6. Click on `Create Project`.
+  
+#### Get working
+  7. Open the `.Rmd` file that is stored in the project (in week 1, this is called `QM2022_Week01.Rmd`).
+
+
+## The RStudio interface
+
+The RStudio interface has four panes:
+
+```{r, echo=FALSE, out.width="100%", fig.align = 'center'}
+knitr::include_graphics("images/rstudio_interface.png")
+```
+
+  - **Editor**: This is were you usually code. You can either use .Rmd (R Markdown) or .R (plain R code) files.
+  - **Console**: This is where the results appear once you execute your R-code. You can also directly type R-code into the console and execute it. However, we cannot save this code which is why we usually work in the Editor.
+  - **Environment**: Here you have an overview over all the objects currently loaded in your environment. You will learn more about objects later in the course.
+  - **Files, Plots, Packages, Help, Viewer**: Plots and other things will appear here, don't worry too much about it for the moment.
+
+
+## R as a basic calculator
+
+Enough preparation, let's finally dive into R!
+
+R can perform basic math operations. Here are some examples:
+
+```{r Calculator}
+1 + 1
+```
+
+Some more calculations:
+
+```{r Calculator2}
+2 - 3
+
+4 * 5
+
+2^2
+
+4 / 2
+
+2^(1 / 2)
+```
+
+If you place parentheses correctly, R incorporates the order of operations.
+
+```{r Calculator3}
+((2 + 2) * 2)^2
+```
+
+This should give the same result as before.
+
+```{r Calculator4}
+(4 * 2)^2
+```
+
+
+But this of course gives a different result:
+
+```{r Calculator5}
+(2 + 2 * 2)^2
+```
+    
+You can also use other math functions you know from your calculator:
+
+this is $\sqrt{2}$
+
+```{r sqrt}
+sqrt(2)
+```
+
+when you do not specify the base, R uses the natural log with base $e$, i.e. $\log_e(10)$
+
+```{r log1}
+log(10)
+```
+
+but R can also use a different (virtually any) base, e.g. $\log_{10}(10)$
+
+```{r log2, exercise=TRUE}
+log(10, base = 10)
+```
+
+or with base = 5, i.e. $\log_5(10)$
+
+```{r log3}
+log(10, 5)
+```
+
+
+> <i class="fa fa-graduation-cap"></i> **Pro tip:** Always close your parentheses! 
+
+
+  - If you encounter an error when running your code, it is often a missing parenthesis, brace or bracket.
+  - RStudio highlights your paired parenthesis. This is really nice and helpful!
+
+
+## Make use of comments
+
+It is hard to understand pure code, especially for someone who did not write it (and future-you will also have a hard time to understand it).
+
+
+> <i class="fa fa-graduation-cap"></i> **Pro tip:** Add comments to your code, describing what you are doing and why you are doing it.
+
+ 
+**With comments:**
+
+- Other people can understand your code (for example us when we are going through your Homework assignments or your classmates when you are talking about your work).
+- You can remember what you were doing when you reopen your code after weeks (e.g., to prepare the data essay at the end of the semester).
+
+### So how can I add comments?
+
+- Begin a line with a `#` symbol, 
+- Everything on that line after the `#` will be commented out.
+- This means if you send the script to the R console the console will not run these lines. 
+
+```{r addition}
+# this is a comment
+
+1 + 1 # This line runs
+
+# 1 + 1 This line does not run
+```
+
+- Indent your scripts (both code and comments) using spaces so that they are readable.
+- Try to code according to [Google's R Style Guide](http://adv-r.had.co.nz/Style.html).
+
+> <i class="fas fa-quote-right"></i> Good coding style is like using correct punctuation. <br> Youcanmanagewithoutitbutitsuremakesthingseasiertoread.. -- Hadley Wickham
+
+
+## Objects in R
+
+But I already do have a calculator. Why do I need R? 
+  
+> <i class="fa fa-hand-o-right"></i> R is so much more! R is an object-oriented programming language.
+
+#### What is an "object" in R?
+  
+  - An object is a form to store the data you want to use.
+
+#### What kind of data can I store as an object?
+    
+  - In R there are three main types of data you can store:
+      - Numeric (numbers)
+      - Character (letters/words/sentences/texts, called strings)
+      - Logical (TRUE/FALSE statements)
+  - These are the types you will often encounter.
+  - However, there are many other possible types.
+
+#### So how can I get information into an object?
+  
+  - Store an object by using `<-` as assignment operator
+
+**Examples:**
+
+```{r assignment_operator, eval = TRUE, error=TRUE}
+lucky_number <-
+ 
+# Now we created an (numeric) object called "lucky_number"
+
+lucky_number
+```
+
+The `class()` command lets us check the type of an object:
+
+```{r class_command, eval = TRUE, error=TRUE}
+lucky_number <-
+
+class(lucky_number)
+```
+
+Let's see how this works live, this time with a character object:
+
+```{r character_object, eval = TRUE, error=TRUE}
+firstname <- "" # This is a character object
+
+firstname
+
+class(firstname)
+
+lastname <- ""
+
+lastname
+```
+
+
+
+## Data Structures
+
+What kind of data can I store in R? Different types of objects that can contain different types and sets of data:
+
+  - **Scalar**:      numbers, characters, logical values
+  - **Vector**:      sets of scalars (thus, numbers, characters, logical)
+  - **Matrix**:      two-dimensional set of scalars of same type
+  - **Data frame**:  collections of vectors of (possibly) different types
+  - **Array**:       multidimensional set of scalars of same type
+  - **List**:        combinations of scalars, vectors, matrices...
+
+We will go through all of these object types below. On top of that we will also learn how to calculate the measures of central tendency and variability with vectors.
+
+
+### Data Structures - Vectors
+
+Let's start with vectors. We want a vector of the numbers 1, 2, 3, 4 and 5. How do I assign this set of numbers to a vector?
+
+<i class="fa fa-hand-o-right"></i> The `c()` function combines single values to a vector:
+
+```{r vec}
+example_vec <- c(1, 2, 3, 4, 5)
+
+example_vec
+```
+
+This also works for characters/strings:
+
+```{r char_vec}
+country_code <- c("DE", "FR", "NL", "US", "UK")
+
+country_code
+```
+
+And it also works for a combination of numbers and characters:
+
+```{r combi1}
+example_vec2 <- c("Welcome", "to", "the", "lab", "in", "A", 5)
+
+example_vec2
+```
+
+What if we start with numbers?
+
+```{r combi2}
+example_vec3 <- c(1, 2, 3, 4, 5, "R can count!")
+
+example_vec3
+```
+
+
+<i class="fa fa-hand-o-right"></i> Note that if you have a character field in your vector, R will turn ALL values into character data! (You can see that by the quotes around the values)
+
+Let's check the type of data by using the `class()` command on `example_vec3`.
+
+```{r combi3}
+example_vec3 <- c(1, 2, 3, 4, 5, "R can count!")
+
+class(example_vec3)
+```
+
+You can use mathematical functions on each element in numeric vectors/matrices etc.
+
+```{r functions_objects1}
+example_vec <- c(1, 2, 3, 4, 5)
+
+sqrt(example_vec) # Take the square root of each element in example_vec
+```
+
+What about multiplication?
+
+```{r functions_objects3}
+example_vec <- c(1, 2, 3, 4, 5)
+
+example_vec * 10
+```
+
+There are also some functions that you can use on the whole vector.
+
+```{r functions_objects4}
+example_vec <- c(1, 2, 3, 4, 5)
+
+sum(example_vec) # Question: What does sum() do?
+
+length(example_vec) # Question: What does length() do?
+```
+
+
+### Data Structures - Matrices
+
+<i class="fa fa-hand-o-right"></i> Matrices in R are two-dimensional table objects. In R, matrices are always row by column. Like **r**oller **c**oaster, **R**oman **C**atholic or **R**ay **C**harles).
+
+In a matrix, all data must be of the same type. If you mix numeric and character entries, the matrix will be all character just like in a vector.
+
+How do I create a matrix in R?
+
+```{r mat1}
+example_mat1 <- matrix(c(1, 2, 3, 4, 5, 6),
+  nrow = 3,
+  ncol = 2
+)
+
+example_mat1 # How did R fill the numbers in the matrix?
+```
+
+You could also change the options an let R fill the matrix *by rows* (instead of columns):
+
+```{r mat2}
+example_mat2 <- matrix(c(1, 2, 3, 4, 5, 6),
+  nrow = 3,
+  ncol = 2,
+  byrow = T
+)
+
+example_mat2 # See the difference?
+```
+
+
+Or you could create a matrix from different vectors by using column-bind on two or more vectors. It works similar to the `c()` function but with vectors as input instead of scalars.
+
+Let's first create two vectors of the same length:
+
+```{r mat3}
+vec1 <- c(1, 2, 3, 4, 5, 6)
+
+vec2 <- c(7, 8, 9, 10, 11, 12)
+
+# And now column-bind - cbind() - the two vectors.
+
+example_mat3 <- cbind(vec1, vec2)
+
+example_mat3
+```
+
+Similarly, we can row-bind -- `rbind()` -- the two vectors:
+
+```{r mat4}
+vec1 <- c(1, 2, 3, 4, 5, 6)
+
+vec2 <- c(7, 8, 9, 10, 11, 12)
+
+example_mat4 <- rbind(vec1, vec2)
+
+example_mat4
+```
+
+### Data Structures - Data frames
+
+<i class="fa fa-hand-o-right"></i> Data frames are two-dimensional table objects, just like matrices. Most data you will analyze in R will be in this form.
+
+You can create data frames from vectors just like `cbind()` using `data.frame()`:
+
+```{r df01}
+vec1 <- c(1, 2, 3, 4, 5, 6)
+
+vec2 <- c(7, 8, 9, 10, 11, 12)
+
+example_df1 <- data.frame(vec1, vec2)
+
+example_df1
+```
+
+However, data frames are always column-bound vectors. In a data frame, everything within a column has to be of the same data type. But **you can mix data types between columns**: 
+
+```{r df02}
+vec1 <- c(1, 2, 3, 4, 5, 6)
+
+vec2 <- c(7, 8, 9, 10, 11, 12)
+
+vec3 <-
+  c(
+    "First Row",
+    "Second Row",
+    "Third Row",
+    "Fourth Row",
+    "Fifth Row",
+    "Sixth Row"
+  )
+
+example_df2 <- data.frame(vec1, vec2, vec3)
+
+example_df2
+```
+
+
+You can also name your columns/variables. Either when creating your data frame:
+
+```{r df03}
+vec1 <- c(1, 2, 3, 4, 5, 6)
+
+vec2 <- c(7, 8, 9, 10, 11, 12)
+
+vec3 <-
+  c(
+    "First Row",
+    "Second Row",
+    "Third Row",
+    "Fourth Row",
+    "Fifth Row",
+    "Sixth Row"
+  )
+
+example_df3 <- data.frame(
+  variable_1to6 = vec1,
+  variable_7to12 = vec2,
+  variable_rows = vec3
+)
+
+example_df3
+```
+
+Or by renaming an existing data frame.
+
+```{r df04}
+vec1 <- c(1, 2, 3, 4, 5, 6)
+
+vec2 <- c(7, 8, 9, 10, 11, 12)
+
+vec3 <-
+  c(
+    "First Row",
+    "Second Row",
+    "Third Row",
+    "Fourth Row",
+    "Fifth Row",
+    "Sixth Row"
+  )
+
+example_df3 <- data.frame(vec1, vec2, vec3)
+
+
+# Rename the variables of an existing data frame
+
+names(example_df3) <- c("variable.1", "variable.2", "variable.3")
+
+example_df3
+```
+
+```{r "example_df3_setup"}
+vec1 <- c(1, 2, 3, 4, 5, 6)
+
+vec2 <- c(7, 8, 9, 10, 11, 12)
+
+vec3 <-
+  c(
+    "First Row",
+    "Second Row",
+    "Third Row",
+    "Fourth Row",
+    "Fifth Row",
+    "Sixth Row"
+  )
+
+example_df3 <- data.frame(vec1, vec2, vec3)
+
+names(example_df3) <- c("variable.1", "variable.2", "variable.3")
+```
+
+
+We can also add a new variable to an existing data frame. We simply create a data frame which consists of a data frame and a vector:
+
+```{r df05, exercise.setup="example_df3_setup"}
+example_df4 <-
+  data.frame(example_df3, 
+             variable_4 = c(90, 91, 92, 93, 94, 95))
+
+example_df4
+```
+
+
+### Data Structures - Arrays
+
+These are like matrices, except that they are typically three-dimensional. You're not going to see many of these, but we'll introduce them for completeness. Here is an illustration of what a three-dimensional array could ook like:
+
+![](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/ee14c44d-6052-4d43-a8b9-7bc4df6b8ce4/81c54d6f-56ed-49db-af7f-39e6b4da5adf/images/screenshot.jpg)
+
+You can think of 10 3 x 5 bingo cards, that all display spaces 1 through 15 for example, as an array. If I were to display that in R, I would use the array function to write:
+
+```{r array, results = "hide"}
+bingo_array <- array(seq(1, 15, 1), 
+                     dim = c(3, 5, 10))
+
+bingo_array
+```
+
+The general syntax for this function is `array(values you want to array, dim = (row, column, height))`.
+
+### Data Structures - Lists
+
+List objects can contain a series of the other objects we just learned about. A single list can contain a value, a vector, a matrix, AND a dataframe - or many of each!
+
+How do I make a list?
+
+<i class="fa fa-hand-o-right"></i> Use the `list()` function!
+    
+```{r list, results = "hide"}
+# create a vector
+example_vec <- c(1, 2, 3, 4, 5, 6, 7, 8)
+
+# create a matrix
+example_mat <- matrix(c(1, 2, 3, 4, 5, 6),
+                      nrow = 3,
+                      ncol = 2)
+
+# create an array
+example_array <- array(seq(1, 15, 1), dim = c(3, 5, 10))
+
+example_vec3 <- c(1, 2, 3, 4)
+
+
+## Store all objects in a list
+
+example_list <- list(example_vec, example_mat, example_array)
+
+example_list
+```
+
+## Selecting elements in a vector, matrix or data.frame
+
+Sometimes we want to select single or multiple data entries from our objects. We can do this by selecting elements via `[]`.
+
+Let's first do it with a vector. Remember our country_code vector?
+
+```{r selection1}
+country_code <- c("DE", "FR", "NL", "US", "UK")
+
+country_code
+```
+
+
+```{r country_code_setup}
+country_code <- c("DE", "FR", "NL", "US", "UK")
+```
+
+
+Let's say we only want to select the "US". We can achieve this by accessing the value via its position in the vector:
+
+```{r selection2}
+country_code[4]
+```
+
+Now we want to select all values but the "US":
+
+```{r selection3}
+country_code[-4]
+```
+
+You can pass multiple indexes as a vector:
+
+```{r selection4}
+country_code[c(1, 2, 3)]
+```
+
+`1:3` generates the vector `c(1, 2, 3)` a bit quicker.
+
+```{r selection5}
+country_code[1:3]
+```
+
+
+If we want the values "DE", "FR", and "US", a sequence does not really help. But we can put a vector with a combination of a sequence and some other values in the square brackets:
+
+```{r selection6}
+country_code[c(1:2, 4)]
+```
+
+#### Selecting items in two-dimensional objects
+
+We can access values of a matrix similarly. However, we need to think of one additional dimension. 
+
+```{r mat}
+example_mat <- matrix(c(1, 2, 3, 4, 5, 6),
+                      nrow = 3,
+                      ncol = 2)
+
+example_mat
+```
+
+
+Generally, we type `object[row, column]` to access specific rows and columns. To see how this works, let's have a look at our `example_mat`:
+
+Now we want to access the value 6. It's in the third row and the second column.
+
+```{r selection7}
+example_mat[3, 2]
+```
+
+We could also select an entire column (and use it like a vector).
+
+```{r selection8}
+example_mat[, 2]
+```
+
+
+By accessing values with the `[]` square brackets, we could also replace values. 
+Let's say we want to recode the entire first column in `example_mat3` to 99:
+
+```{r selection9}
+example_mat[, 1] <- 99
+
+example_mat
+```
+
+```{r mat_setup2}
+example_mat <- matrix(c(1, 2, 3, 4, 5, 6),
+                      nrow = 3,
+                      ncol = 2)
+
+example_mat[, 1] <- 99
+```
+
+
+```{r selection10}
+# And we want to recode the first and the third value in the second column
+# to 91 and 100
+
+example_mat[c(1, 3), 2] <- c(91, 100)
+
+example_mat
+```
+
+
+### Selection with conditions
+
+This is a good start to select and recode data in an object. 
+However, it might be a bit exhausting (maybe even impossible) to always look up the exact position in the object.
+
+Luckily, R let's us also select elements based on conditions. 
+Instead of the position we put a condition in the [] square brackets.
+
+
+ - For this we can use several conditions:
+    - Is equal to:            `==`
+    - Is not:                 `!=`
+    - Is smaller than:        `<`
+    - Is greater than:        `>`
+    - Is smaller or equal to: `<=`
+    - Is greater or equal to: `>=`
+
+ - Conditions can be combined with and and/or or statements
+    - AND: `&`
+    - OR:  `|`
+    
+So how do conditions work? Let's create a matrix to work with
+
+```{r cond0}
+vec1 <- c(1, 2, 3, 4, 5, 6)
+
+vec2 <- c(7, 8, 9, 10, 11, 12)
+
+# And now column-bind (cbind()) the two vectors.
+
+example_mat <- cbind(vec1, vec2)
+
+example_mat
+```
+
+
+```{r condition_setup1}
+vec1 <- c(1, 2, 3, 4, 5, 6)
+
+vec2 <- c(7, 8, 9, 10, 11, 12)
+
+# And now column-bind (cbind()) the two vectors.
+
+example_mat <- cbind(vec1, vec2)
+```
+
+
+```{r cond1}
+example_mat > 9 # This returns TRUE or FALSE for each value in the object.
+```
+
+
+Now if we put this condition in square brackets we get the values for which the condition is true.
+```{r cond2}
+example_mat[example_mat > 9]
+```
+
+## Working with data.frames
+
+Working with data frames is similar to working with matrices and vectors.
+
+### Loading and manipulating data
+
+Usually (and especially for this class) we want to work with existing datasets. R knows and can load most of the standard formats of datasets, like `.csv`, `.xlsx` (Excel), `.dta` (Stata), `.sav` (SPSS) and many more. 
+
+So far we only used R's base functions. In order to use some more sophisticated or special R functions, we need to load libraries or packages first. Think of these libraries as extra apps that you can load on your smartphones to extend its functionality. 
+
+Right now, we want to load the dataset. In order to use the standard but foreign datasets we need the *foreign* package.
+
+First, we want to have a look at what the package can do.
+
+```{r}
+packageDescription("foreign")
+
+# Ok this seems to be useful. So let's load the package to use it.
+library(foreign)
+```
+
+You will often come across datasets which are stored as Stata data files. Those files have the extension `.dta`.
+
+Right now, we want to load the data set called `weather_data_germany_2021.dta` which is already stored the `raw_data` folder in our directory:
+
+```{r}
+weather_data <- read.dta("raw_data/weather_data_germany_2021.dta")
+```
+
+
+The data contains yearly temperature averages of German cities as well as their geographical location (longitude and latitude). It comes from the "Deutscher Wetterdienst" and you can find it [here](https://cdc.dwd.de/portal/202204011005/index.html). Now that we have loaded the data, we can have a look at it.
+
+With `head()`we can look at the first six rows of the data set:
+
+```{r df1}
+head(weather_data)
+```
+
+But we can also look at the entire data set:
+
+```{r df2, results = "hide"}
+weather_data
+```
+
+If we only want to look at the variable names, we can use `names()`:
+
+```{r df3}
+names(weather_data)
+```
+
+Now we can use our selecting abilities on a data frame. As before we can select elements via their numeric position:
+
+```{r df5}
+weather_data[1, 2] # first row, second column
+```
+
+
+```{r df6}
+weather_data[1:3, 1] # rows 1-3, first column
+```
+
+Additionally, as columns usually have names in data frames, we can use the column names to select values in two ways.
+
+First, we can put the column name in square brackets instead of a column number:
+
+```{r df7}
+weather_data[1, "city"]
+```
+
+```{r df8, results = "hide"}
+weather_data[, "mean_temp"]
+```
+
+We can also look at two variables at once:
+
+```{r df9, results = "hide"}
+weather_data[, c("city", "mean_temp")]
+```
+
+
+Second, we can also select an entire column by using the `$` operator with the column name: `data.frame_name$column_name`. Just like this:
+
+```{r df10}
+weather_data$mean_temp
+```
+
+Columns from data frames are essentially vectors. We can use all the operations and functions we can use for vectors (depending on their class.)
+
+```{r df11}
+weather_data$mean_temp[1] # For example, we can select an element of the vector
+```
+
+What if we want to add a new variable? Let's create a variable named "young".
+
+```{r df12}
+weather_data$cold <- 0
+
+# What does this do?
+
+weather_data$cold
+```
+
+Now, we want to recode "young" to 1 for people who are younger than 25.
+
+```{r df13, results = "hide"}
+
+weather_data$cold <- 0
+
+weather_data$cold[weather_data$mean_temp < 8] <- 1
+
+# Let's have a look at both variables:
+
+weather_data[, c("city", "mean_temp", "cold")]
+```
+
+
+
+
+## Calculating Measures of Central Tendency and Variability
+
+Let's look at the Measures of Central Tendency and Variability from the lecture (starting at slide 16).
+
+Consider the following vector:
+
+```{r}
+example_vec <- c(1, 2, 3, 4, 5)
+```
+
+
+How could we calculate the mean of `example_vec`?
+
+We could simply calculate it "by hand":
+
+```{r}
+(1 + 2 + 3 + 4 + 5) / 5
+```
+
+But this is not very useful if we look at an actual vector in our data frame, e.g., mean temperature:
+
+```{r mct1}
+weather_data$mean_temp
+```
+
+Typing up all the entries individually would take a lot of time. We could use two functions that we already have seen, sum and length.
+
+```{r mct2}
+sum(weather_data$mean_temp) / length(weather_data$mean_temp)
+```
+
+
+Fortunately, R provides a much easier way to calculate a mean:
+
+```{r mct3}
+mean(weather_data$mean_temp) # That was easy.
+```
+
+But be sure that your vector is numeric. Could you calculate the mean of city?
+
+```{r mct4}
+weather_data$city
+```
+
+Let's try to calculate the mean.
+
+```{r mct5}
+mean(weather_data$city)
+```
+
+It does not work! And even by hand we could not calculate the mean of character valued vectors. 
+
+Here is an overview over functions for measures of centrality and variability:
+
+  - Mean: `mean()`
+  - Median: `median()`
+  - Variance: `var()`
+  - Standard Deviation: `sd()`
+  - Range: `range()`
+  - Inter-quartile range: `IQR()`
+  
+You can try them out here:
+
+```{r mct6}
+# Median
+
+median(weather_data$mean_temp)
+
+# Variance
+
+var(weather_data$mean_temp)
+
+# Standard deviation
+
+sd(weather_data$mean_temp)
+
+# Range
+
+range(weather_data$mean_temp)
+
+# Inter Quartile Range (IQR)
+
+IQR(weather_data$mean_temp)
+```
+
+Unfortunately, there is no direct function to get the mode.
+The solutions you will find online are all a bit advanced. 
+So the easiest solution is to look for the mode using a frequency table.
+
+```{r mct7}
+table(weather_data$cold)
+```
+
+The `table()` function shows you how often each value is in the vector. You can now identify the most frequent value. 
+
+
+
+## Plotting data
+
+Let's have a short look at our data again.
+Remember: `head()` shows you the first six entries of your data. It is very useful to get a look at the data structure when you have a lot of rows in your dataset.
+
+```{r}
+head(weather_data)
+```
+
+
+### Plots for bivariate distributions
+
+#### Scatterplots
+
+Now we can create a simple scatterplot:
+
+```{r vis1}
+plot(
+  x = weather_data$longitude,
+  y = weather_data$mean_temp
+)
+```
+
+To get a nicer plot, we can adjust many things. We suggest to always explicitly make those adjustments in the same order.
+
+```{r vis2}
+plot(
+  x = weather_data$longitude,
+  y = weather_data$mean_temp,
+  type = "p", # This explicitly says that we want points. You could also try "l".
+  main = "Mean temperatures of German cities", # This adds a title to the plot
+  xlab = "Longitude (West - East)", # This labels the x-axis.
+  ylab = "Mean Temperature in 2021", # What does this do then?
+  las = 1, # This affects the tick labels of the y-axis.
+  pch = 19, # Here we choose what symbols we want to plot.
+  col = "black", # What color should the symbols have?
+  frame = F # No box around the plot.
+)
+```
+
+### Adding Color to Plots with Viridis
+
+We can also adjust the colors. Let's highlight Mannheim!
+
+> <i class="fa fa-graduation-cap"></i> Pro Tip: To color up your data visualizations, use the <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html" style="color:white">viridis-package</a>. 
+
+Viridis colors make it easier to read by those with colorblindness and print well in greyscale. You probably don't want to have plots like this:
+
+![](https://flowingdata.com/wp-content/uploads/2012/11/Divided-nation.jpg)
+
+We first need a vector that gives us the right colors with respect to the city variable.
+
+```{r}
+library(viridis)
+
+# we need two colors, this is how we get them:
+two_colors <- viridis(2)
+
+two_colors # these are so-called HEX color codes
+
+# we use the first color for males and the second for females
+mannheim_color <- ifelse(weather_data$city == "Mannheim", two_colors[1], two_colors[2])
+
+# let's have a look:
+table(mannheim_color) 
+```
+
+Now we can use this vector to specify the color respective to Mannheim:
+
+```{r vis3}
+plot(
+  x = weather_data$longitude,
+  y = weather_data$mean_temp,
+  type = "p", # This explicitly says that we want points. You could also try "l".
+  main = "Mean temperatures of German cities", # This adds a title to the plot
+  xlab = "Longitude (West - East)", # This labels the x-axis.
+  ylab = "Mean Temperature in 2021", # What does this do then?
+  las = 1, # This affects the tick labels of the y-axis.
+  pch = 19, # Here we choose what symbols we want to plot.
+  col = mannheim_color, # Instead of just black we now use the color vector.
+  frame = F # No frame around the plot.
+)
+```
+
+Now that we use different colors, we also need a legend to know which color is which.
+
+```{r vis4}
+plot(
+  x = weather_data$longitude,
+  y = weather_data$mean_temp,
+  type = "p", # This explicitly says that we want points. You could also try "l".
+  main = "Mean temperatures of German cities", # This adds a title to the plot
+  xlab = "Longitude (West - East)", # This labels the x-axis.
+  ylab = "Mean Temperature in 2021", # What does this do then?
+  las = 1, # This affects the tick labels of the y-axis.
+  pch = 19, # Here we choose what symbols we want to plot.
+  col = mannheim_color, # Instead of just black we now use the color vector.
+  frame = F # No frame around the plot.
+)
+legend(
+  "bottomleft", # Locate the legend in the topleft corner.
+  legend = c("Mannheim", "other"), # Give it labels.
+  pch = 19, # Specify symbols as in the scatterplot.
+  col = two_colors, # Specify colors.
+  bty = "n" # No box around the legend.
+)
+```
+
+```{r}
+plot(
+  x = weather_data$longitude,
+  y = weather_data$mean_temp,
+  type = "p", # This explicitly says that we want points. You could also try "l".
+  main = "Mean temperatures of German cities", # This adds a title to the plot
+  xlab = "Longitude (West - East)", # This labels the x-axis.
+  ylab = "Mean Temperature in 2021", # What does this do then?
+  las = 1, # This affects the tick labels of the y-axis.
+  pch = 19, # Here we choose what symbols we want to plot.
+  col = mannheim_color, # Instead of just black we now use the color vector.
+  frame = F # No frame around the plot.
+)
+# we want to label the point that refers to Mannheim
+# We can do that with the text() function,
+# But we need to subset the data, so that only Mannheim gets labelled,
+# and no other city
+text(
+  x = weather_data$longitude[weather_data$city == "Mannheim"], # subset Mannheim
+  y = weather_data$mean_temp[weather_data$city == "Mannheim"], # subset Mannheim
+  labels = "Mannheim", # label Mannheim as "Mannheim"
+  pos = 4 # position the label right to the point
+)
+```
+
+
+### Plots for univariate distributions
+
+#### Histograms
+
+Now we want to visualize mean temperature with a histogram. This is how you get a standard histogram:
+
+```{r vis5}
+hist(x = weather_data$mean_temp) # That's intuitive, but does not look too great
+```
+
+Again, we can adjust many things to make it nicer.
+
+```{r vis6}
+hist(
+  x = weather_data$mean_temp, # For a histogram we only specify x.
+  breaks = 50, # specify the number of bins
+  main = "A Histogram",
+  xlab = "Mean temperature in degree Celsius",
+  ylab = "Number of observations",
+  las = 1, # shift the y-axis labels 
+  col = viridis(1), # One color only (first color from viridis)
+  border = "white" # That's the color of the bin borders.
+)
+```
+
+#### Density Plots
+
+We can also create density plots.
+
+```{r vis7}
+plot(
+  density(weather_data$mean_temp), # density() takes care of x, y and type.
+  main = "A Simple Density Plot",
+  xlab = "Mean temperature in degree Celsius",
+  ylab = "", # The y-axis is not really meaningful here.
+  col = viridis(1),
+  lwd = 2, # Control the width of the line
+  frame = F,
+  yaxt = "n" # Remove the y-axis.
+)
+```
+
+And we can also fill the are underneath the curve:
+
+```{r vis8}
+plot(
+  density(weather_data$mean_temp), # density() takes care of x, y and type.
+  main = "A Simple Density Plot",
+  xlab = "Mean temperature in degree Celsius",
+  ylab = "", # The y-axis is not really meaningful here.
+  col = viridis(1),
+  lwd = 2, # Control the width of the line
+  frame = F,
+  yaxt = "n" # Remove the y-axis.
+)
+
+polygon(density(weather_data$mean_temp), 
+        col = viridis(1, alpha = 0.5) # same color but 50% transparent
+        )
+```
+
+#### ...and Boxplots
+
+```{r vis9}
+boxplot(
+  x = weather_data$mean_temp, # As for histograms we only specify x.
+  main = "Boxplot of Mean temperature in degree Celsius",
+  ylab = "Mean temperature in degree Celsius",
+  las = 1,
+  col = plasma(1),
+  frame = F
+)
+```
+
+Or a horizontal boxplot.
+
+```{r vis10}
+boxplot(
+  x = weather_data$mean_temp,
+  horizontal = T, # With horizontal = T we rotate the boxplot.
+  main = "Horizontal Boxplot of Mean temperature in degree Celsius",
+  xlab = "Mean temperature in degree Celsius",
+  las = 1,
+  frame = F
+)
+```
+
+You learned in the lecture that boxplots have some disadvantages.
+
+> <i class="fa fa-hand-o-right"></i> Violin plots are a very nice alternative!
+
+This is how you get them:
+
+```{r vis11}
+library(vioplot)
+
+vioplot(
+  x = weather_data$mean_temp,
+  horizontal = T, # With horizontal = T we rotate the boxplot.
+  main = "Horizontal Violinplot of Mean temperature in degree Celsius",
+  xaxt = "n",
+  xlab = "Mean temperature in degree Celsius",
+  bty = "n",
+  axes = FALSE,
+  names = "",
+  border = NA
+)
+```
+
+
+
+
+## Your turn: Exercises!
+
+This has been a lot but now it's finally your turn! We have a series of exercises for you to try out the stuff you just learned. 
+
+>  <i class="fa fa-graduation-cap"></i> Pro tip: Copy the lines of code that worked for something similar. Then, adjust the code according to your problem. That's how coding works most of the time!
+
+
+### Exercise I: Creating objects
+
+Create three objects:
+
+    1. `my_lucky_number` should contain your lucky number.
+    2. `my_firstname` should contain your firstname.
+    3. `my_lastname` should contain your lastname.
+
+After you created the objects, call them separately. Don't forget to add comments to your code.
+
+```{r Exercise_I_1, eval = T, error=TRUE}
+
+```
+
+### Exercise II: Selecting and recoding elements
+
+a) Create two vectors `vec1` and `vec2`.
+    - `vec1` should contain 1, 56, 23, 89, -3 and 5 (in that order).
+    - `vec2` contains 24, 78, 32, 27, 8 and 1.
+    
+b) Now select elements of `vec1` that are greater than 5 or smaller than 0.
+
+c) Next set `vec1` to zero if `vec2` is greater than 30 and smaller or equal to 32.
+
+Please solve all three steps in the next code chunk.
+    
+```{r Exercise_II, eval = T, error=TRUE}
+
+```
+
+###  Exercise III: Manipulating data
+
+Now we will work with the `weather_data` data set. It is already loaded for you and you can use it right away.
+
+a) Show the variable `age` if it is over 60.
+
+b) Generate a new variable and call it `hot` that is zero for *mean temperature* < 10 and 1 for *mean temperature* > 10 degree Celsius.
+
+c) Have a look at your data set.
+
+Please solve all three steps in the next code chunk.
+
+```{r Exercise_III, eval = T, error=TRUE}
+
+```
+
+
+### Exercise IV: Subsetting
+
+Can you find the hottest and coldest city in Germany 2021? 
+
+Hint: The functions `min()` and `max()` help you to find the minimum and maximum values of a vector or variable. Combine that with your newly learned subsetting skills and you'll find the answer.
+
+```{r Exercise_IV_1, eval = T, error=TRUE}
+
+```
+
+
+### Exercise V: Measures of central tendency
+
+We will continue working with the weather data set
+
+a) Calculate the mean value of age and save the result as `latitude`.
+      
+```{r Exercise_V_1, eval = T, error=TRUE}
+
+```
+
+b) Calculate the variance of age and save the result as `latitude`.
+
+```{r Exercise_V_2, eval = T, error=TRUE}
+
+```
+
+c) Calculate the standard deviation of age and save the result as `latitude`.
+
+```{r Exercise_V_3, eval = T, error=TRUE}
+
+```
+
+
+###  Exercise VI: Plotting
+   
+a) Make a histogram of the *latitude* variable. 
+
+```{r Exercise_VI_1, eval = T, error=TRUE}
+
+```
+   
+b) Make the plot nice looking (Name the axes, main title, colors...)
+
+```{r Exercise_VI_2, eval = T, error=TRUE}
+
+```
+
+## Recap
+
+What we learned in this session:
+  
+  1. How to work with R and GitHub.
+  2. Assigning objects in R.
+  3. Different data structures in R.
+  4. How to get to single elements within data structures.
+  5. Working with data frames.
+  6. How to load a data set into R.
+  7. How to make nice looking plots in R.
+
+## What you will do in your homework.
+
+The first lab session and this script should equip you with all the tools (and lines of code) to tackle the first homework assignment.
+
+>  <i class="fa fa-graduation-cap"></i> Copy the lines of code that worked for something similar. Then, adjust the code according to your problem.
+
+Substantially, in your homework you will inspect a data set on US presidential elections. You will calculate some measures of central tendency and variability. Finally, you will produce some nice plots.
+
+It is best to get started with your homework as soon as possible (after it was handed out on Tuesday). 
+
+Try to write the R Code first. We will provide you a `.Rmd` template to hand in your results.
+
+In order to pass the homework assignment you need to tackle ALL problems of a problem set. For a pass you also need to get most of the problems right (or at least show us that you tried everything to get it right.)
+
+
+### Closing remarks.
+
+If you have any questions concerning the lecture or the tutorial please post them to the ILIAS forum or on Slack. We will answer them on a regular basis.
+
+Do not hesitate to come to the office hours!
+
+And always remember if you have a question, it is never a stupid question. In fact most of your fellow students probably have the same or a similar question. By asking it, everyone in this class will profit.
