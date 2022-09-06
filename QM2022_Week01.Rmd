@@ -3,13 +3,13 @@ title: "QM 2022 Week 1:<br>Getting Started with R"
 author: "Oliver Rittmann<br>Domantas Undzėnas<br>Lion Behrens<br>"
 date: "September 7 | 8 | 9, 2022"
 output:
-  html_document:
+  html_notebook:
     toc: true
     toc_float: true
     css: css/lab.css
   pdf_document:
     toc: yes
-  html_notebook:
+  html_document:
     toc: true
     toc_float: true
     css: css/lab.css
@@ -567,7 +567,7 @@ example_df4
 
 ### Data Structures - Arrays
 
-These are like matrices, except that they are typically three-dimensional. You're not going to see many of these, but we'll introduce them for completeness. Here is an illustration of what a three-dimensional array could ook like:
+These are like matrices, except that they are typically three-dimensional. You're not going to see many of these, but we'll introduce them for completeness. Here is an illustration of what a three-dimensional array could look like:
 
 ![](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/ee14c44d-6052-4d43-a8b9-7bc4df6b8ce4/81c54d6f-56ed-49db-af7f-39e6b4da5adf/images/screenshot.jpg)
 
@@ -740,7 +740,7 @@ Instead of the position we put a condition in the [] square brackets.
     
 So how do conditions work? Let's create a matrix to work with
 
-```{r cond0}
+```{r cond00}
 vec1 <- c(1, 2, 3, 4, 5, 6)
 
 vec2 <- c(7, 8, 9, 10, 11, 12)
@@ -751,18 +751,6 @@ example_mat <- cbind(vec1, vec2)
 
 example_mat
 ```
-
-
-```{r condition_setup1}
-vec1 <- c(1, 2, 3, 4, 5, 6)
-
-vec2 <- c(7, 8, 9, 10, 11, 12)
-
-# And now column-bind (cbind()) the two vectors.
-
-example_mat <- cbind(vec1, vec2)
-```
-
 
 ```{r cond1}
 example_mat > 9 # This returns TRUE or FALSE for each value in the object.
@@ -878,7 +866,7 @@ weather_data$cold
 
 Now, we want to recode "cold" to 1 for cities whose mean temperature is lower than 8 degrees Celsius.
 
-```{r df13, results = "hide"}
+```{r df13}
 
 weather_data$cold <- 0
 
@@ -894,7 +882,7 @@ weather_data[, c("city", "mean_temp", "cold")]
 
 ## Calculating Measures of Central Tendency and Variability
 
-Let's look at the Measures of Central Tendency and Variability from the lecture (starting at slide 16).
+Let's look at the Measures of Central Tendency and Variability from the lecture (starting at slide 17).
 
 Consider the following vector:
 
