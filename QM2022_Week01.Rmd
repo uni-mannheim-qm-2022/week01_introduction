@@ -264,7 +264,7 @@ But I already do have a calculator. Why do I need R?
 **Examples:**
 
 ```{r assignment_operator, eval = TRUE, error=TRUE}
-lucky_number <-
+lucky_number <- 7
  
 # Now we created an (numeric) object called "lucky_number"
 
@@ -866,7 +866,7 @@ Columns from data frames are essentially vectors. We can use all the operations 
 weather_data$mean_temp[1] # For example, we can select an element of the vector
 ```
 
-What if we want to add a new variable? Let's create a variable named "young".
+What if we want to add a new variable? Let's create a variable named "cold".
 
 ```{r df12}
 weather_data$cold <- 0
@@ -876,7 +876,7 @@ weather_data$cold <- 0
 weather_data$cold
 ```
 
-Now, we want to recode "young" to 1 for people who are younger than 25.
+Now, we want to recode "cold" to 1 for cities whose mean temperature is lower than 8 degrees Celsius.
 
 ```{r df13, results = "hide"}
 
