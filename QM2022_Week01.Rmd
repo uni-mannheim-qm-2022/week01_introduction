@@ -3,13 +3,13 @@ title: "QM 2022 Week 1:<br>Getting Started with R"
 author: "Oliver Rittmann<br>Domantas Undzėnas<br>Lion Behrens<br>"
 date: "September 7 | 8 | 9, 2022"
 output:
-  html_notebook:
+  html_document:
     toc: true
     toc_float: true
     css: css/lab.css
   pdf_document:
     toc: yes
-  html_document:
+  html_notebook:
     toc: true
     toc_float: true
     css: css/lab.css
@@ -291,6 +291,25 @@ class(firstname)
 lastname <- ""
 
 lastname
+```
+
+
+### Exercise I: Creating objects
+
+Your turn: Here is your very first exercise! 
+
+>  <i class="fa fa-graduation-cap"></i> Pro tip: Copy the lines of code that worked for something similar. Then, adjust the code according to your problem. That's how coding works most of the time!
+
+Create three objects:
+
+    1. `my_lucky_number` should contain your lucky number.
+    2. `my_firstname` should contain your firstname.
+    3. `my_lastname` should contain your lastname.
+
+After you created the objects, call them separately. Don't forget to add comments to your code.
+
+```{r Exercise_I_1, eval = T, error=TRUE}
+
 ```
 
 
@@ -762,6 +781,26 @@ Now if we put this condition in square brackets we get the values for which the 
 example_mat[example_mat > 9]
 ```
 
+
+### Exercise II: Selecting and recoding elements
+
+Here comes the second round of exercises:
+
+a) Create two vectors `vec1` and `vec2`.
+    - `vec1` should contain 1, 56, 23, 89, -3 and 5 (in that order).
+    - `vec2` contains 24, 78, 32, 27, 8 and 1.
+    
+b) Now select elements of `vec1` that are greater than 5 or smaller than 0.
+
+c) Next set `vec1` to zero if `vec2` is greater than 30 and smaller or equal to 32.
+
+Please solve all three steps in the next code chunk.
+    
+```{r Exercise_II, eval = T, error=TRUE}
+
+```
+
+
 ## Working with data.frames
 
 Working with data frames is similar to working with matrices and vectors.
@@ -976,6 +1015,53 @@ table(weather_data$cold)
 The `table()` function shows you how often each value is in the vector. You can now identify the most frequent value. 
 
 
+###  Exercise III: Manipulating data
+
+Now we will work with the `weather_data` data set. It is already loaded for you and you can use it right away.
+
+a) Show the variable `age` if it is over 60.
+
+b) Generate a new variable and call it `hot` that is zero for *mean temperature* < 10 and 1 for *mean temperature* > 10 degree Celsius.
+
+c) Have a look at your data set.
+
+Please solve all three steps in the next code chunk.
+
+```{r Exercise_III, eval = T, error=TRUE}
+
+```
+
+### Exercise IV: Subsetting
+
+This is a little trickier: Can you find the hottest and coldest city in Germany 2021? 
+
+Hint: The functions `min()` and `max()` help you to find the minimum and maximum values of a vector or variable. Combine that with your newly learned subsetting skills and you'll find the answer.
+
+```{r Exercise_IV_1, eval = T, error=TRUE}
+
+```
+
+### Exercise V: Measures of central tendency
+
+We will continue working with the weather data set
+
+a) Calculate the mean value of age and save the result as `latitude`.
+      
+```{r Exercise_V_1, eval = T, error=TRUE}
+
+```
+
+b) Calculate the variance of age and save the result as `latitude`.
+
+```{r Exercise_V_2, eval = T, error=TRUE}
+
+```
+
+c) Calculate the standard deviation of age and save the result as `latitude`.
+
+```{r Exercise_V_3, eval = T, error=TRUE}
+
+```
 
 ## Plotting data
 
@@ -1221,98 +1307,10 @@ vioplot(
 ```
 
 
-
-
-## Your turn: Exercises!
-
-This has been a lot but now it's finally your turn! We have a series of exercises for you to try out the stuff you just learned. 
-
->  <i class="fa fa-graduation-cap"></i> Pro tip: Copy the lines of code that worked for something similar. Then, adjust the code according to your problem. That's how coding works most of the time!
-
-
-### Exercise I: Creating objects
-
-Create three objects:
-
-    1. `my_lucky_number` should contain your lucky number.
-    2. `my_firstname` should contain your firstname.
-    3. `my_lastname` should contain your lastname.
-
-After you created the objects, call them separately. Don't forget to add comments to your code.
-
-```{r Exercise_I_1, eval = T, error=TRUE}
-
-```
-
-### Exercise II: Selecting and recoding elements
-
-a) Create two vectors `vec1` and `vec2`.
-    - `vec1` should contain 1, 56, 23, 89, -3 and 5 (in that order).
-    - `vec2` contains 24, 78, 32, 27, 8 and 1.
-    
-b) Now select elements of `vec1` that are greater than 5 or smaller than 0.
-
-c) Next set `vec1` to zero if `vec2` is greater than 30 and smaller or equal to 32.
-
-Please solve all three steps in the next code chunk.
-    
-```{r Exercise_II, eval = T, error=TRUE}
-
-```
-
-###  Exercise III: Manipulating data
-
-Now we will work with the `weather_data` data set. It is already loaded for you and you can use it right away.
-
-a) Show the variable `age` if it is over 60.
-
-b) Generate a new variable and call it `hot` that is zero for *mean temperature* < 10 and 1 for *mean temperature* > 10 degree Celsius.
-
-c) Have a look at your data set.
-
-Please solve all three steps in the next code chunk.
-
-```{r Exercise_III, eval = T, error=TRUE}
-
-```
-
-
-### Exercise IV: Subsetting
-
-Can you find the hottest and coldest city in Germany 2021? 
-
-Hint: The functions `min()` and `max()` help you to find the minimum and maximum values of a vector or variable. Combine that with your newly learned subsetting skills and you'll find the answer.
-
-```{r Exercise_IV_1, eval = T, error=TRUE}
-
-```
-
-
-### Exercise V: Measures of central tendency
-
-We will continue working with the weather data set
-
-a) Calculate the mean value of age and save the result as `latitude`.
-      
-```{r Exercise_V_1, eval = T, error=TRUE}
-
-```
-
-b) Calculate the variance of age and save the result as `latitude`.
-
-```{r Exercise_V_2, eval = T, error=TRUE}
-
-```
-
-c) Calculate the standard deviation of age and save the result as `latitude`.
-
-```{r Exercise_V_3, eval = T, error=TRUE}
-
-```
-
-
 ###  Exercise VI: Plotting
-   
+
+Okay, last round of exercises for today:
+ 
 a) Make a histogram of the *latitude* variable. 
 
 ```{r Exercise_VI_1, eval = T, error=TRUE}
@@ -1324,6 +1322,9 @@ b) Make the plot nice looking (Name the axes, main title, colors...)
 ```{r Exercise_VI_2, eval = T, error=TRUE}
 
 ```
+
+
+
 
 ## Recap
 

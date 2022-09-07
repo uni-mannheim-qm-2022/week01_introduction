@@ -8,7 +8,7 @@
  - The Economist
  - [BBC](https://blog.revolutionanalytics.com/2018/06/ft-bbc-uses-r.html)
  - Google Analytics
- - [NY Times graphics department](http://www.nytimes.com/interactive/2012/08/10/sports/olympics/passing-patterns-of-the-uss-top-playmakers.html)
+ - NY Times graphics department
  
  
 ### What is **RStudio**?
@@ -43,13 +43,13 @@ We will you one repository for each lab and one repository for each homework ass
 
 Our workflow will appear a bit tricky at the beginning but we are sure that you will handle it with ease very soon. We assume that by now you downloaded and installed R and Rstudio and have your personal GitHub account.
 
-The course has its own page on GitHub, you can find it here: [https://github.com/uni-mannheim-qm-2021](https://github.com/uni-mannheim-qm-2021). This is the place where you can find all relevant material for the lab sessions. It is also the place where you download and hand in your homework assignments. 
+The course has its own page on GitHub, you can find it here: [https://github.com/uni-mannheim-qm-2022](https://github.com/uni-mannheim-qm-2022). This is the place where you can find all relevant material for the lab sessions. It is also the place where you download and hand in your homework assignments. 
 
 So how does this work?
 
 #### Get the URL of the repo for the current week
 
-Go to [https://github.com/uni-mannheim-qm-2021](https://github.com/uni-mannheim-qm-2021) and click on the repository for the current week (this week, this is called `week01_introduction`). Now, click on the green **Clone or download** button and select **Use HTTPS** (this might already be selected by default, and if it is, you'll see the text Clone with HTTPS as in the image below). Click on the clipboard icon to copy the repo URL.
+Go to [https://github.com/uni-mannheim-qm-2022](https://github.com/uni-mannheim-qm-2022) and click on the repository for the current week (this week, this is called `week01_introduction`). Now, click on the green **Clone or download** button and select **Use HTTPS** (this might already be selected by default, and if it is, you'll see the text Clone with HTTPS as in the image below). Click on the clipboard icon to copy the repo URL.
 
 
 ![](images/github_clone.png)
@@ -67,7 +67,7 @@ Go to [https://github.com/uni-mannheim-qm-2021](https://github.com/uni-mannheim-
   6. Click on `Create Project`.
   
 #### Get working
-  1. Open the `.Rmd` file that is stored in the project (in week 1, this is called `QM2021_Week01.Rmd`).
+  1. Open the `.Rmd` file that is stored in the project (in week 1, this is called `QM2022_Week01.Rmd`).
   2. Hit the **Run Document** button.
 
 
