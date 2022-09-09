@@ -1019,7 +1019,7 @@ The `table()` function shows you how often each value is in the vector. You can 
 
 Now we will work with the `weather_data` data set. It is already loaded for you and you can use it right away.
 
-a) Show the variable `age` if it is over 60.
+a) Show the variable `mean_temp` if it is over 10.
 
 b) Generate a new variable and call it `hot` that is zero for *mean temperature* < 10 and 1 for *mean temperature* > 10 degree Celsius.
 
@@ -1045,19 +1045,19 @@ Hint: The functions `min()` and `max()` help you to find the minimum and maximum
 
 We will continue working with the weather data set
 
-a) Calculate the mean value of age and save the result as `latitude`.
+a) Calculate the mean value of latitude and save the result as `mean_latitude`.
       
 ```{r Exercise_V_1, eval = T, error=TRUE}
 
 ```
 
-b) Calculate the variance of age and save the result as `latitude`.
+b) Calculate the variance of latitude and save the result as `var_latitude`.
 
 ```{r Exercise_V_2, eval = T, error=TRUE}
 
 ```
 
-c) Calculate the standard deviation of age and save the result as `latitude`.
+c) Calculate the standard deviation of latitude and save the result as `sd_latitude`.
 
 ```{r Exercise_V_3, eval = T, error=TRUE}
 
